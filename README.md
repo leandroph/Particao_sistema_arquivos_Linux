@@ -77,3 +77,53 @@ $ sudo blkid | grep sdb1
 Anote o UUID resultante, você precisará dele mais tarde.
 
 ![alt text](imagens/imagem24.png)
+
+## Passo 4: Montar a Partição
+
+1. Crie um diretório onde você deseja montar a partição. Vamos usar "/mnt" como exemplo:
+
+```bash
+$ sudo mkdir /mnt/mydata
+```
+2. Monte a partição no diretório criado:
+
+```bash
+$ sudo mount /dev/sdb1 /mnt/mydata
+```
+
+3. Você pode criar alguns arquivos de teste na partição, se desejar:
+
+```bash
+$ sudo touch /mnt/mydata/file{1,2,3,4}.txt
+```
+
+## Passo 5: Configurar Montagem Automática no Boot
+
+1. Abra o arquivo "/etc/fstab" em um editor de texto, como o Nano:
+
+```bash
+$ sudo nano /etc/fstab
+```
+
+2. Adicione uma linha no final do arquivo para montar a partição automaticamente durante o boot. Use o UUID que foi salvo anteriormente:
+
+```bash
+UUID=XXXXX /mnt/mydata ext4 defaults 0 0
+```
+Substitua "XXXXX" pelo UUID real da partição.
+
+3. Salve o arquivo (no Nano, pressione Ctrl + O, depois Enter, e depois Ctrl + X para sair).
+
+4. Teste a configuração do fstab para garantir que não haja erros:
+
+```bash
+$ sudo mount -a
+```
+
+5. Reinicie a VM para verificar se a partição é montada automaticamente durante o boot:
+
+```bash
+$ sudo reboot
+```
+
+Após a reinicialização, verifique se a partição está montada corretamente usando o comando df -h. Você terá um disco extra montado automaticamente em sua VM Linux sempre que ela for reiniciada.
