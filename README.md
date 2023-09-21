@@ -30,11 +30,44 @@ Este tutorial orientará você a adicionar um disco extra à sua máquina virtua
 
 ## Passo 2: Criar uma Partição Primária
 
-Inicie sua VM e abra um terminal.
+1. Inicie sua VM e abra um terminal.
 
-Digite o seguinte comando para listar os discos disponíveis:
+2. Digite o seguinte comando para listar os discos disponíveis:
 ```bash
 sudo fdisk -l
 ```
 
 É possível identificar que a máquina possui dois novos discos /dev/sdb e /dev/sdc.
+
+![alt text](imagens/imagem12.png)
+
+3. Iremos criar duas novas partições, utilzando os discos que atachamos a Máquina Virtual, utilitário fdisk:
+
+```bash
+$ sudo fdisk /dev/sdb
+```
+No prompt do fdisk, siga estas etapas:
+
+Pressione n para criar uma nova partição.
+Escolha a opção padrão para partição primária, pressionando Enter.
+Pressione Enter para aceitar o primeiro setor padrão.
+Digite +1G para especificar o tamanho da partição como 1GB.
+Pressione w para salvar as alterações e sair.
+Pressione q para sair do fdisk.
+
+## Passo 3: Formatar a Partição e Obter o UUID
+
+1. Formate a nova partição em ext4 (ou xfs, se preferir):
+
+```bash
+$ sudo mkfs.ext4 /dev/sdb1
+```
+![alt text](imagens/imagem22.png)
+![alt text](imagens/imagem23.png)
+2. Obtenha o UUID da partição recém-formatada:
+
+```bash
+$ sudo blkid | grep sdb1
+```
+
+Anote o UUID resultante, você precisará dele mais tarde.
