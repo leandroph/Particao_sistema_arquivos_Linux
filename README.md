@@ -63,6 +63,10 @@ Pressione q para sair do fdisk.
 $ sudo mkfs.ext4 /dev/sdb1
 ```
 ![alt text](imagens/imagem22.png)
+
+```bash
+$ sudo mkfs.ext4 /dev/sdc1
+```
 ![alt text](imagens/imagem23.png)
 2. Obtenha o UUID da partição recém-formatada:
 
@@ -71,3 +75,5 @@ $ sudo blkid | grep sdb1
 ```
 
 Anote o UUID resultante, você precisará dele mais tarde.
+
+![alt text](imagens/imagem24.png)
