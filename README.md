@@ -127,3 +127,5 @@ $ sudo reboot
 ```
 
 Após a reinicialização, verifique se a partição está montada corretamente usando o comando df -h. Você terá um disco extra montado automaticamente em sua VM Linux sempre que ela for reiniciada.
+
+![alt text](imagens/imagem25.png)
