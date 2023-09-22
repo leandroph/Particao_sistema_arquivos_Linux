@@ -1,6 +1,6 @@
 # Como Adicionar um Disco e Particionar no Linux
 
-Este tutorial orientará você a adicionar um disco extra à sua máquina virtual Linux no VirtualBox, criar uma partição primária, formatá-la em ext4, montá-la no sistema e configurar a montagem automática durante o boot.
+Este tutorial orientará você a adicionar um disco extra à sua máquina virtual Linux no VirtualBox, criar uma partição primária, formatá-la em ext4, monta-la no sistema e configurar a montagem automática durante o boot.
 
 ## Passo 1: Adicionar um Disco Extra no VirtualBox
 
@@ -15,7 +15,7 @@ Este tutorial orientará você a adicionar um disco extra à sua máquina virtua
 ![alt text](imagens/imagem4.png)
 6. No tipo de arquivo de disco rígido, mantenha marcada a opção VDI (Virtual Disk Image), clique em Próximo.
 ![alt text](imagens/imagem5.png)
-7. No armazenamento em disco rígido físico, não iremos nós aprofundar, apenas clique em Próximo.
+7. No armazenamento em disco rígido físico, não iremos nos aprofundar, apenas clique em Próximo.
 ![alt text](imagens/imagem6.png)
 8. Para o tamanho do disco utilizaremos 20GB.
 ![alt text](imagens/imagem7.png)
@@ -30,9 +30,9 @@ Este tutorial orientará você a adicionar um disco extra à sua máquina virtua
 
 ## Passo 2: Criar uma Partição Primária
 
-1. Inicie sua VM e abra um terminal.
+1. Inicie sua VM e abra um terminal ou conecte na Máquina via ssh.
 
-2. Digite o seguinte comando para listar os discos disponíveis:
+2. Vamos listar os discos que criamos, anteriormente, digite o seguinte comando para listar os discos disponíveis:
 ```bash
 sudo fdisk -l
 ```
@@ -45,12 +45,13 @@ sudo fdisk -l
 
 ```bash
 $ sudo fdisk /dev/sdb
+$ sudo fdisk /dev/sdb
 ```
 No prompt do fdisk, siga estas etapas:
 
 Pressione n para criar uma nova partição.
-Escolha a opção padrão para partição primária, pressionando Enter.
-Pressione Enter para aceitar o primeiro setor padrão.
+Escolha a opção padrão para partição primária, pressionando Enter, pois assim você selecionar a opção default.
+Pressione novamente o Enter para aceitar o primeiro setor padrão.
 Digite +1G para especificar o tamanho da partição como 1GB.
 Pressione w para salvar as alterações e sair.
 Pressione q para sair do fdisk.
